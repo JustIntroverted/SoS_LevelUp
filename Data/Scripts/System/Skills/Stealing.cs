@@ -350,7 +350,12 @@ namespace Server.SkillHandlers
 						{
 							m_Thief.SendLocalizedMessage( 502724 ); // You successfully steal the item.
 
-							Titles.AwardKarma( m_Thief, -60, true );
+							Mobile targetmobile = root as Mobile;
+
+							if ( targetmobile is Mobile  && Notoriety.Compute( m_Thief, targetmobile ) == Notoriety.Innocent )
+							{
+								Titles.AwardKarma( m_Thief, -60, true );
+							}
 
 							if ( si != null )
 							{
