@@ -89,6 +89,7 @@ namespace Server.SkillHandlers
 					}
 				}
 
+				// Only lose karma while snooping if the target's notoriety is innocent
 				if ( from.AccessLevel == AccessLevel.Player && from.Karma > 0 &&
 				  Notoriety.Compute( from, root ) == Notoriety.Innocent )
 					Titles.AwardKarma( from, -4, true );

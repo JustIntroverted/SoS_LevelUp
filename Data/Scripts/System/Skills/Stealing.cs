@@ -352,10 +352,9 @@ namespace Server.SkillHandlers
 
 							Mobile targetmobile = root as Mobile;
 
-							if ( targetmobile is Mobile  && Notoriety.Compute( m_Thief, targetmobile ) == Notoriety.Innocent )
-							{
+							// Only lose karma while stealing if the target's notoriety is innocent
+							if ( Notoriety.Compute( m_Thief, targetmobile ) == Notoriety.Innocent )
 								Titles.AwardKarma( m_Thief, -60, true );
-							}
 
 							if ( si != null )
 							{
